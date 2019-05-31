@@ -1,0 +1,100 @@
+
+
+A DFF Neural Network (implemented with a genetic algorithm)
+
+
+
+0-
+  / 0---0         • 5 inputs
+0-       \
+  /       \
+0-  0---0---0     • One output
+  \       /
+0-       /
+  / 0---0         • Two hidden layers of 3 neurons
+0-
+
+
+
+  Each time the NN runs
+
+  // Receive 5 data points
+
+  // Calculate first hidden layer based
+  // on weights, biases, and 5 inputs
+      // Sigmoid()
+
+  // Calculate second hidden layer based
+  // on weights, biases, and second layer
+
+  // Calculate output based on weights
+  // bias and the third layer
+
+
+  CALCULATION:
+
+
+    FIRST LAYER
+
+         (                                  [N11             )
+        ( [[W111,W112,W113,W114,W115],       N12       [B21   )    [N21
+Sigmoid (  [W121,W122,W123,W124,W125],  •    N13   +    B22   ) =   N22
+        (  [W131,W132,W133,W134,W135]]       N14        B23]  )     N23]
+         (                                   N15]            )
+
+    SECOND LAYER
+
+         (                                          )
+        ( [[W211,W212,W213],      [N21        [B31   )    [N31
+Sigmoid (  [W221,W222,W223],  •    N22    +    B32   ) =   N32
+        (  [W231,W232,W233]]       N23]        B33]  )     N33]
+         (                                          )
+
+    OUTPUT
+
+         (                                               )
+        (                               [N31              )
+Sigmoid (  [[W311],[W321],[W331]]   •    N32   +  [B41]   ) = [N41] THE OUTPUT!!!
+        (                                N33]             )
+         (                                               )
+
+
+
+
+ TRAINING:
+
+ // The goal is to determine the ideal Ws and Bs
+
+ 1. CREATE RANDOM THOUGH PROCESSES
+
+    [W111, W112, W113, W114, W115, W121, W122, W123, W124, W125, W131, W132, W133, W134, W135, W211, W212, W213, W221, W222, W223, W231, W232, W233, W311, W321, W331, B21, B22, B23, B31, B32, B33, B41]
+
+    *LENGTH = 34
+
+
+ 2. TEST EACH THOUGHT PROCESS TO DETERMINE FITNESS
+
+    - game must be built
+    - each process is assigned a percentage (prob. based on fitness)
+
+ 3. CREATE YOUR MATING VECTOR
+
+    - vector containing all the processes according to
+      their respective fitness percentages
+
+ 4. POPULATE NEW GENERATION OF THOUGHT PROCESSES
+
+    a. select two random from mating vector
+    b. splice them together with a splicing function
+    c. apply a mutation rate (randomly mutate individual numbers)
+    d. repeat until generation two is full
+
+
+ 5. REPEAT TRAINING PROCESS WITH NEXT GENERATION
+
+    - avoid over fitting by training on multiple tracks...
+    - or maybe training each generation on multiple tracks
+      and determining a combined fitness score for each before
+      selection?
+
+ 6. WHEN FINISHED AND SATISFIED, YOU HAVE MADE THE NN
